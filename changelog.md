@@ -2,7 +2,7 @@
 
 ## Planing 
 - sketch in excalidraw
-  ![excalidraw map](./readme-src/sketch.JPG)
+  ![excalidraw map](./readme-src/initial-plan.JPG)
 - distributed model with forks and branches in github
 - choose technologies more or less
   ![Technologies](./readme-src/technologies.JPG)
