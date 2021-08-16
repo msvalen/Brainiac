@@ -14,11 +14,10 @@ class Score {
         return new Promise (async (resolve, reject) => {
             try {
                 const db = await init()
-                const scoreData = await db.collection('scores').find().toArray()
-                const scores = scoreData.map(s => new Score({ ...s, id: data.id }))
+                const scoreData = await db.collection('scores').find().toArray();
+                const scores = scoreData.map(s => new Score({ ...s, id: s._id }))
                 resolve(scores);
             } catch (err) {
-                console.log(err)
                 reject("Error getting scores")
             }
         })
@@ -29,7 +28,7 @@ class Score {
             try {
                 const db = await init();
                 let scoreData = await db.collection('scores').insertOne({ score })
-                let newScore = new Score(scoreData.ops[0]);
+                let newScore = new Score({...score, id:scoreData.insertedId});
                 resolve (newScore);
             } catch (err) {
                 reject('Error adding new score');
