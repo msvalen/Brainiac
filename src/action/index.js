@@ -25,7 +25,13 @@ export const fetchCategories = () => {
     return async (dispatch) => {
         try {
             const { data } = await axios.get('https://opentdb.com/api_category.php')
-            console.log(data);
+            let newCategoryArray = data.trivia_categories.map((data, i) => ({id: i, category: data.name}))
+            console.log('urgh')
+            console.log(newCategoryArray);
+            dispatch ({
+                type: 'UPDATE_CATEGORY',
+                payload: newCategoryArray
+            })
         } catch (err) {
             dispatch ({
                 type: 'SET_ERROR',

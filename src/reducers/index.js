@@ -8,12 +8,12 @@ const mainReducer = (state=initState, action) => {
         case 'UPDATE_CATEGORY': 
             return({
                 ...state,
-                category: action.payload,
+                categories: action.payload,
                 error: false
             });
         case 'SET_ERROR': 
             return{...state, error : action.payload};
-        default :
+        default:
             return state;
     }
 }
