@@ -1,12 +1,13 @@
 import axios from 'axios';
 
+//bring in user input for difficulty and category
 export const fetchCategories = () => {
     return async (dispatch) => {
         try {
             const { data } = await axios.get('https://opentdb.com/api.php?amount=10&category=22&difficulty=easy&type=multiple')
             console.log(data.results);
-            let newCategoryArray = results.category.map((category, i) => ({ id: i + 1, category: category}))
-            console.log(newCategoryArray)
+            let newCategoryArray = data.results.map((data, i) => ({ id: i + 1, category: data.category}))
+            console.log(newCategoryArray);
             dispatch ({
                 type: 'UPDATE_CATEGORY',
                 payload: newCategoryArray

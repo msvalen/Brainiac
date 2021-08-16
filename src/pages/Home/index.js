@@ -15,25 +15,31 @@ const Home = () => {
         dispatch(fetchCategories())
     }, [])
 
-    const handleAddUser = () => {
+    const handleAddUser = (e) => {
+        e.preventDefault();
         //Monica's stuff
     }
 
     const handleGenQuiz = () => {
-        console.log(dispatch(fetchCategories()));
+        e.preventDefault();
+        // To do
     }
 
     return (
         <>
             <h1>Quiz Title</h1>
-            <select>
-                {/* {data.results.map((x,y) => <option key={y}>{x}</option>)} */}
-            </select>
-            <select>
-                {/* {data.difficulty.map((x,y) => <option key={y}>{x}</option>)} */}
-            </select>
-            <button onClick={handleAddUser}>Add users</button>
-            <button onClick={handleGenQuiz}>Generate Quiz</button>
+            <form id="inputParameters">
+                <label htmlFor="topic"></label>
+                <select name="topic" form="inputParameters" id="topic">
+                    {/* {data.results.map((x,y) => <option key={y}>{x}</option>)} */}
+                </select>
+                <label htmlFor="difficulty"></label>
+                <select name="difficulty" form="inputParameters" id="difficulty">
+                    {/* {data.difficulty.map((x,y) => <option key={y}>{x}</option>)} */}
+                </select>
+                <button onClick={handleAddUser}>Add users</button>
+                <button onClick={handleGenQuiz}>Generate Quiz</button>
+            </form>
             <h2>By: Deborah, Monica & Scott</h2>
         </>
     )
