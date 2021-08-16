@@ -23,6 +23,6 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=scores-pass
     volumes:
       - "dbdata:/var/lib/mongodb/data"
-      - "./db/tables.js:/docker-entrypoint-initdb.d/tables.js:ro"
+      - "./db/seeds.js:/docker-entrypoint-initdb.d/seeds.js:ro"
 volumes:
   dbdata:
