@@ -22,6 +22,20 @@ class Score {
             }
         })
     }
+
+    static create(score){
+        return new Promise (async (resolve, reject) => {
+            try {
+                const db = await init();
+                let scoreData = await db.collection('scores').insertOne({ score })
+                let newScore = new Score(scoreData.ops[0]);
+                resolve (newScore);
+            } catch (err) {
+                reject('Error adding new score');
+            }
+        });
+    }
 }
+
 
 module.exports = Score;
