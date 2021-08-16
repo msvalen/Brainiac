@@ -1,18 +1,40 @@
-import { useFetch } from "../../components";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchCategories } from '../../action';
 
 const Home = () => {
 
-    const data = useFetch('https://opentdb.com/api.php?amount=10&category=22&difficulty=easy&type=multiple');
-    console.log(data);
+    const dispatch = useDispatch();
+    const error = useSelector(state => state.error)
+
+    // const toSee = dispatch(fetchCategories());
+    // console.log(toSee);
+
+    useEffect(() => {
+        dispatch(fetchCategories())
+    }, [])
+
+    const handleAddUser = () => {
+        //Monica's stuff
+    }
+
+    const handleGenQuiz = () => {
+        console.log(dispatch(fetchCategories()));
+    }
 
     return (
         <>
             <h1>Quiz Title</h1>
-            {/* <textarea>{topicData}</textarea> */}
-            <p>{console.log(data)}</p>
-            // <form>
-            //     <option></option>
-            // </form>
+            <select>
+                {/* {data.results.map((x,y) => <option key={y}>{x}</option>)} */}
+            </select>
+            <select>
+                {/* {data.difficulty.map((x,y) => <option key={y}>{x}</option>)} */}
+            </select>
+            <button onClick={handleAddUser}>Add users</button>
+            <button onClick={handleGenQuiz}>Generate Quiz</button>
+            <h2>By: Deborah, Monica & Scott</h2>
         </>
     )
 }
