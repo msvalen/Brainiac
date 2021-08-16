@@ -1,1 +1,1 @@
-// exports only
+export { Modal } from './Modal'
