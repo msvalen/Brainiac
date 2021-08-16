@@ -10,11 +10,11 @@
     "coverage": "jest --testPathPattern=/unit/ --coverage"
   },
   "jest": {
-		"testEnvironment": "node",
-		"coveragePathIgnorePatterns": [
-			"/node_modules/"
-		]
-	},
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {

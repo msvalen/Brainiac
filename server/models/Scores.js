@@ -18,6 +18,7 @@ class Score {
                 const scores = scoreData.map(s => new Score({ ...s, id: data.id }))
                 resolve(scores);
             } catch (err) {
+                console.log(err)
                 reject("Error getting scores")
             }
         })
