@@ -51,7 +51,7 @@ Your favorite trivia-quiz competition place
 | URL        |  Description  |
 | ---------- | ---------- |
 | /          |  Home page with the initial formulary |
-| /users     |  Show the add user module             |
+| /users     |  Show the add user modal              |
 | /:level/:category |  Quiz game page that in case of not users start an anonynous game with 10 round |
 | /scores/local | After game results |
 | /scores/ | Global scored that do a request to db |
@@ -71,6 +71,7 @@ Find the full changelog [here](changelog.md)
 - add Socket.io package
 - add user profile img generator
 - add auth an auth
+- maybe theme background image by category
 
 ## Licence
 
