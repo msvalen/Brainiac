@@ -1,1 +1,1 @@
-// exports only
+export {AddUser} from './AddUser'
