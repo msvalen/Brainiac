@@ -1,12 +1,12 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { Home, QuizPage, NotFound } from './pages';
+import { Footer } from './layout'
 
 const App = () => {
     return(
     <>
     <h1>And so it begins!</h1>
-        {/* <Header /> */}
                 <Switch>
                     <Route exact path='/'>
                         <Home />
@@ -18,7 +18,7 @@ const App = () => {
                         <NotFound />
                     </Route>
                 </Switch>
-        {/* <Footer /> */}
+        <Footer />
     </>
     )};
 
