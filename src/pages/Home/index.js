@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { fetchCategories } from '../../action';
+import { fetchCategories, quizSettings } from '../../action';
 import { useHistory } from 'react-router-dom';
 import { Modal } from '../../layout';
 
@@ -19,11 +19,8 @@ const Home = () => {
 
     useEffect(async () => {
         try {
-            // console.log('here')
-            // const { category } = 
             await dispatch(fetchCategories());
-            // setData(category);
-            // console.log(category);
+            console.log(dispatch(quizSettings()));
         } catch (err) {
             console.log(err.message);
         }
@@ -37,12 +34,13 @@ const Home = () => {
         setModal(true)
     }
 
-    const handleGenQuiz = () => {
+    const handleGenQuiz = (e) => {
         e.preventDefault();
-
-        history.push('/:level/:category')
-        // To do
+        dispatch(quizSettings());
+        console.log(form)
+        // history.push('/:level/:category')
     }
+
     const saveUsers = (e) => {
         setUsers(e);
     }
