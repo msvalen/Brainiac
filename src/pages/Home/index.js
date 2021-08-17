@@ -2,20 +2,24 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { fetchCategories } from '../../action';
+import { useHistory } from 'react-router-dom';
 
 const Home = () => {
-    // const [ data, setData] = useState([]);
+    // const [ difficulty, setDifficulty] = useState('Easy');
+    // const [ category, setCategory ] = useState('Animals');
 
     const dispatch = useDispatch();
     const data1 = useSelector(state => state.categories);
     const error = useSelector(state => state.error)
+    const history = useHistory();
 
     useEffect(async () => {
         try {
-            console.log('here')
-            const { category } = await dispatch(fetchCategories());
+            // console.log('here')
+            // const { category } = 
+            await dispatch(fetchCategories());
             // setData(category);
-            console.log(category);
+            // console.log(category);
         } catch (err) {
             console.log(err.message);
         }
@@ -28,6 +32,8 @@ const Home = () => {
 
     const handleGenQuiz = () => {
         e.preventDefault();
+
+        history.push('/:level/:category')
         // To do
     }
 
@@ -41,9 +47,10 @@ const Home = () => {
                 </select>
                 <label htmlFor="difficulty"></label>
                 <select name="difficulty" form="inputParameters" id="difficulty">
-                   <option value="easy">Easy</option>
-                   <option value="medium">Medium</option>
-                   <option value="hard">Hard</option>
+                    {/* <option value={difficulty} onChange={(e) => setDifficulty(e.target.value)}>Easy</option> */}
+                   <option value="Easy">Easy</option>
+                   <option value="Medium">Medium</option>
+                   <option value="Hard">Hard</option>
                 </select>
                 <button onClick={handleAddUser}>Add users</button>
                 <button onClick={handleGenQuiz}>Generate Quiz</button>
