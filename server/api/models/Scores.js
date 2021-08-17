@@ -27,7 +27,7 @@ class Score {
         return new Promise (async (resolve, reject) => {
             try {
                 const db = await init();
-                let scoreData = await db.collection('scores').insertOne({ score })
+                let scoreData = await db.collection('scores').insertOne(score)
                 let newScore = new Score({...score, id:scoreData.insertedId});
                 resolve (newScore);
             } catch (err) {
