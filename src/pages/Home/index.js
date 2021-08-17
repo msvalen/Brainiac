@@ -28,6 +28,9 @@ const Home = () => {
             console.log(err.message);
         }
     }, []);
+    useEffect(()=>{
+        console.log(users)
+    },[users])
 
     const closeModal = () => {
         setModal(false);
@@ -37,7 +40,7 @@ const Home = () => {
         setModal(true)
     }
 
-    const handleGenQuiz = () => {
+    const handleGenQuiz = (e) => {
         e.preventDefault();
 
         history.push('/:level/:category')
@@ -62,7 +65,7 @@ const Home = () => {
                    <option value="medium">Medium</option>
                    <option value="hard">Hard</option>
                 </select>
-                {(users)? <button onClick={handleAddUser}>Add users</button> : <p>{users}</p>}
+                {(users.length === 0)? <button onClick={handleAddUser}>Add users</button> : <p>{users}</p>}
                 {modal && <Modal getResults={saveUsers} show={closeModal}/>}
                 <button onClick={handleGenQuiz}>Generate Quiz</button>
             </form>

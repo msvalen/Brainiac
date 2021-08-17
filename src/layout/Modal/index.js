@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {AddUser} from '../../components/'
 import './style.css'
 
 function Modal( { getResults, show }) {
     const [users, setUsers] = useState([])
+
+    useEffect(()=>{
+        console.log(users);
+    },[])
 
     const handler = (e) => {
         e.preventDefault();
@@ -11,6 +15,7 @@ function Modal( { getResults, show }) {
         // for(let x of e.target){
         //     if(x.value) users.push(x.value);
         // }
+        console.log(users)
         getResults(users)
         show();
     }
