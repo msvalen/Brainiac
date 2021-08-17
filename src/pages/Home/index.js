@@ -61,7 +61,7 @@ const Home = () => {
                    <option value='medium'>Medium</option>
                    <option value='hard'>Hard</option>
                 </select>
-                {(users.length === 0)? <button onClick={handleAddUser}>Add users</button> : <p>{users}</p>}
+                {(users.length === 0)? <button onClick={handleAddUser}>Add users</button> : <p>{users.map((x,i) => <span key={i}>{x} </span>)}</p>}
                 {modal && <Modal getResults={saveUsers} show={closeModal}/>}
                 <button onClick={handleGenQuiz}>Generate Quiz</button>
             </form>
