@@ -6,6 +6,8 @@ import { useEffect } from 'react';
 
 const HighScores = () => {
     const dispatch = useDispatch();
+    const 
+
     const data1 = useSelector(state => state.categories);
     const error = useSelector(state => state.error)
 
