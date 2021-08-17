@@ -1,27 +1,43 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories } from '../../action';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 
 const HighScores = () => {
+    const [score, setScore] = useState();
     const dispatch = useDispatch();
-    const 
 
-    const data1 = useSelector(state => state.categories);
-    const error = useSelector(state => state.error)
-
+    
     useEffect(async () => {
         try {
-            // console.log('here')
-            // const { category } = 
             await dispatch(fetchCategories());
-            // setData(category);
-            // console.log(category);
         } catch (err) {
             console.log(err.message);
         }
     }, []);
+    
+    useEffect(async () => {
+        try {
+            let { data } = await axios.get('https://brainiac-quiz.netlify.app/.netlify/functions/api')
+            setScore(data.scores)
+        } catch(err) {
+            console.log(err.message)
+        }
+    }, [])
+    
+    const data1 = useSelector(state => state.categories);
+    const error = useSelector(state => state.error)
+    
+    const renderRows = () => {
+        return score.map((s, i ) => <tr key={i}><td>{i+1}</td><td>{s.username}</td><td>progress bar</td><td>{s.score}</td></tr>)
+      }
+
+    // const renderTableRow = (score) => {
+    //     {}
+    // }
+
 
     return (
         <>
@@ -43,20 +59,17 @@ const HighScores = () => {
             </select>
             </form>
 
-            <table id="rankings" class="leaderboard-results" width="100%">
+            <table id="rankings" className="highscore-results" width="100%">
 			<thead>
 				<tr>
 					<th>Rank</th>
 					<th>Name</th>
+					<th>Progress bar</th>
 					<th>Score</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-                    <td>1</td>
-                    <td>deb</td>
-                    <td>4</td>
-                </tr>
+                {score && renderRows()}
 			</tbody>
 		</table>
 
