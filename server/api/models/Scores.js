@@ -1,5 +1,5 @@
 const { init } = require ('../dbConfig')
-const { ObjectId } = require('mongodb')
+// const { ObjectId } = require('mongodb')
 
 class Score {
     constructor(data){
