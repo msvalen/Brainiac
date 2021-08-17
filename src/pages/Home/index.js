@@ -6,21 +6,21 @@ import { useHistory } from 'react-router-dom';
 import { Modal } from '../../layout';
 
 const Home = () => {
-    // const [ difficulty, setDifficulty] = useState('Easy');
-    // const [ category, setCategory ] = useState('Animals');
-    const [modal, setModal]=useState(false);
-    const [users, setUsers] = useState([]);
+
+    const [ category, setCategory ] = useState('Animals');
+    const [ modal, setModal ]=useState(false);
+    const [ users, setUsers ] = useState([]);
+    const [ difficulty, setDifficulty ] = useState('easy')
 
     const dispatch = useDispatch();
     const data1 = useSelector(state => state.categories);
     const error = useSelector(state => state.error)
     const history = useHistory();
-
+    const quizData = useSelector(state => state.settings)
 
     useEffect(async () => {
         try {
             await dispatch(fetchCategories());
-            console.log(dispatch(quizSettings()));
         } catch (err) {
             console.log(err.message);
         }
@@ -39,9 +39,8 @@ const Home = () => {
 
     const handleGenQuiz = (e) => {
         e.preventDefault();
-        dispatch(quizSettings());
-        console.log(form)
-        // history.push('/:level/:category')
+        dispatch(quizSettings(category, users , difficulty));
+        history.push(`/${difficulty}/${category}`);
     }
 
     const saveUsers = (e) => {
@@ -53,15 +52,14 @@ const Home = () => {
             <h1>Quiz Title</h1>
             <form id="inputParameters">
                 <label htmlFor="topic"></label>
-                <select name="topic" form="inputParameters" id="topic">
+                <select name="topic" form="inputParameters" id="topic" onChange={(e) => setCategory(e.target.value)}>
                     {data1 && data1.map((x,i) => <option key={i}>{x.category}</option>)}
                 </select>
                 <label htmlFor="difficulty"></label>
-                <select name="difficulty" form="inputParameters" id="difficulty">
-                    {/* <option value={difficulty} onChange={(e) => setDifficulty(e.target.value)}>Easy</option> */}
-                   <option value="easy">Easy</option>
-                   <option value="medium">Medium</option>
-                   <option value="hard">Hard</option>
+                <select name="difficulty" form="inputParameters" id="difficulty" onChange={(e)=> setDifficulty(e.target.value)}>
+                   <option value='easy'>Easy</option>
+                   <option value='medium'>Medium</option>
+                   <option value='hard'>Hard</option>
                 </select>
                 {(users.length === 0)? <button onClick={handleAddUser}>Add users</button> : <p>{users}</p>}
                 {modal && <Modal getResults={saveUsers} show={closeModal}/>}
