@@ -3,15 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { fetchCategories } from '../../action';
 import { useHistory } from 'react-router-dom';
+import { Modal } from '../../layout';
 
 const Home = () => {
     // const [ difficulty, setDifficulty] = useState('Easy');
     // const [ category, setCategory ] = useState('Animals');
+    const [modal, setModal]=useState(false);
+    const [users, setUsers] = useState([]);
 
     const dispatch = useDispatch();
     const data1 = useSelector(state => state.categories);
     const error = useSelector(state => state.error)
     const history = useHistory();
+
 
     useEffect(async () => {
         try {
@@ -25,9 +29,12 @@ const Home = () => {
         }
     }, []);
 
+    const closeModal = () => {
+        setModal(false);
+    }
     const handleAddUser = (e) => {
         e.preventDefault();
-        //Monica's stuff
+        setModal(true)
     }
 
     const handleGenQuiz = () => {
@@ -35,6 +42,9 @@ const Home = () => {
 
         history.push('/:level/:category')
         // To do
+    }
+    const saveUsers = (e) => {
+        setUsers(e);
     }
 
     return (
@@ -48,11 +58,12 @@ const Home = () => {
                 <label htmlFor="difficulty"></label>
                 <select name="difficulty" form="inputParameters" id="difficulty">
                     {/* <option value={difficulty} onChange={(e) => setDifficulty(e.target.value)}>Easy</option> */}
-                   <option value="Easy">Easy</option>
-                   <option value="Medium">Medium</option>
-                   <option value="Hard">Hard</option>
+                   <option value="easy">Easy</option>
+                   <option value="medium">Medium</option>
+                   <option value="hard">Hard</option>
                 </select>
-                <button onClick={handleAddUser}>Add users</button>
+                {(users)? <button onClick={handleAddUser}>Add users</button> : <p>{users}</p>}
+                {modal && <Modal getResults={saveUsers} show={closeModal}/>}
                 <button onClick={handleGenQuiz}>Generate Quiz</button>
             </form>
             <h2>By: Deborah, Monica & Scott</h2>

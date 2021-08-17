@@ -1,11 +1,11 @@
-form{
+.userModal form{
     display:flex;
     flex-direction: column;
 }
-form div:first-child{
+.userModal form div:first-child{
 margin-left: 26px;
 }
-form button{    
+.userModal form button{    
     width:2em;
 }
 .userModal{
