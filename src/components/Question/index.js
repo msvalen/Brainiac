@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Timebar from '../Timebar';
 import './style.css'
 
 function Question({question, selected}) {
@@ -9,11 +10,6 @@ function Question({question, selected}) {
         const newOptions=randomizer([question.correct_answer, ...question.incorrect_answers]);
         setOptions(newOptions);
         showOptions()
-
-        const timer = setTimeout(() => {
-            setInput('Timeout called!');
-          }, 10000);
-          return () => clearTimeout(timer);
     },[])
 
     useEffect(()=>{
@@ -50,6 +46,7 @@ function Question({question, selected}) {
             <div className='options'>
                 {options && showOptions()}
             </div>
+            <Timebar duration='10000' endAction={(e)=>setInput(e)}/>
         </div>
     );
 
