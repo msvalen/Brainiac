@@ -9,7 +9,7 @@ const QuizPage = () =>{
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(quizSettings())
+        console.log(dispatch(quizSettings()))
     },[])
 
     return (
