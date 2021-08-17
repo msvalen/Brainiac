@@ -4,7 +4,13 @@ function AddUser({toggle, first, returnedValue }) {
     const [ generate, setGenerate ] = useState();
     const [ user, setUser] = useState('')
     const [ otherUser, setOtherUser] = useState([]);
-    
+
+    useEffect(()=>{
+        returnedValue([user,...otherUser]);
+    },[otherUser])
+    useEffect(()=>{
+        returnedValue([user,...otherUser]);
+    },[user])
     const updateInput = e => {
         const input = e.target.value 
         setUser(input);
