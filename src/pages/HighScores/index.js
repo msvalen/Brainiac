@@ -40,7 +40,23 @@ const HighScores = () => {
                 <option value="hard">Hard</option>
             </select>
             </form>
-            
+
+            <table id="rankings" class="leaderboard-results" width="100%">
+			<thead>
+				<tr>
+					<th>Rank</th>
+					<th>Name</th>
+					<th>Score</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+                    <td>1</td>
+                    <td>deb</td>
+                    <td>4</td>
+                </tr>
+			</tbody>
+		</table>
 
         </>
     )
