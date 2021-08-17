@@ -7,6 +7,9 @@ import axios from 'axios';
 
 const HighScores = () => {
     const [score, setScore] = useState();
+    const [ category, setCategory ] = useState('Animals');
+    const [ difficulty, setDifficulty ] = useState('easy')
+
     const dispatch = useDispatch();
 
     
@@ -43,11 +46,11 @@ const HighScores = () => {
             
             <form id="inputParameters">
             <label htmlFor="topic"></label>
-            <select name="topic" form="inputParameters" id="topic">
+            <select name="topic" form="inputParameters" id="topic" onChange={(e) => setCategory(e.target.value)}>
                 {data1 && data1.map((x,i) => <option key={i}>{x.category}</option>)}
             </select>
             <label htmlFor="difficulty"></label>
-            <select name="difficulty" form="inputParameters" id="difficulty">
+            <select name="difficulty" form="inputParameters" id="difficulty" onChange={(e)=> setDifficulty(e.target.value)}>
                 {/* <option value={difficulty} onChange={(e) => setDifficulty(e.target.value)}>Easy</option> */}
                 <option value="easy">Easy</option>
                 <option value="medium">Medium</option>
