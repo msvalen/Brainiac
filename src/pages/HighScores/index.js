@@ -56,7 +56,6 @@ const HighScores = () => {
             <select name="topic" form="inputParameters" id="topic" onChange={(e) => setCategory(e.target.value)}>
                 {data1 && data1.map((x,i) => <option key={i}>{x.category}</option>)}
             </select>
-            {/* <button onClick={handleGetScores}>Get Scores</button> */}
             <label htmlFor="difficulty"></label>
             <select name="difficulty" form="inputParameters" id="difficulty" onChange={(e)=> setDifficulty(e.target.value)}>
                 <option value="easy">Easy</option>
