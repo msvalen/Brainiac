@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react';
 
-function AddUser({toggle, first }) {
+function AddUser({toggle, first, returnedValue }) {
     const [ generate, setGenerate ] = useState();
-    const [ user, setUser] = useState("")
-   
+    const [ user, setUser] = useState('')
+    const [ otherUser, setOtherUser] = useState([]);
 
+    useEffect(()=>{
+        returnedValue([user,...otherUser]);
+    },[otherUser])
+    useEffect(()=>{
+        returnedValue([user,...otherUser]);
+    },[user])
     const updateInput = e => {
         const input = e.target.value 
-        setUser(input)
+        setUser(input);
+        returnedValue([user,...otherUser])
     }
     const generator = ()=>{
         setGenerate(!generate)
@@ -18,13 +25,18 @@ function AddUser({toggle, first }) {
             setGenerate(true);
         }
     }
+    const handleReturn= (e)=>{
+        setOtherUser(e);
+        returnedValue([user,...otherUser]);
+    }
+    
     return (
         <>
         <div>
             {first && <button onClick={()=>toggle()}>-</button>}
             <input type="text" value={user} name='users[]' onChange={updateInput} onKeyDown={keyProcessor}/>
         </div>
-        {(generate)? <AddUser toggle={generator} first={true}/> :  <button className='addUser' onClick={generator}>+</button>}
+        {(generate)? <AddUser toggle={generator} first={true} returnedValue={handleReturn}/> :  <button className='addUser' onClick={generator}>+</button>}
         </>
     );
 };
