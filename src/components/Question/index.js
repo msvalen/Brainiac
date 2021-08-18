@@ -5,6 +5,7 @@ import './style.css'
 function Question({question, selected}) {
     const [options, setOptions] = useState([]);
     const [input, setInput] = useState('');
+    const [isFirstRun,setIsFirstRun] = useState(true);
 
     useEffect(()=>{
         const newOptions=randomizer([question.correct_answer, ...question.incorrect_answers]);
@@ -13,7 +14,11 @@ function Question({question, selected}) {
     },[])
 
     useEffect(()=>{
-        selected(input)
+        if (isFirstRun) {
+            setIsFirstRun(false);
+            return;
+          }
+        else {selected(input)}
     },[input])
 
     function randomizer(array){
@@ -26,14 +31,10 @@ function Question({question, selected}) {
         return randomizedArray;
     }
 
-    function changeQuestion(e){
-        setInput(e.target.value);
-    }
-
     function showOptions(){
         return options.map((option,i) =>{
             return( <label key={i}> {option}
-                    <input type='radio' name='option' value={option} onChange={changeQuestion} />
+                    <input type='radio' name='option' value={option} onChange={(e)=>setInput(e.target.value)} />
                     </label>
             )
         });
