@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+
 
 const QuizSummary = () => {
-    const [showScore, setShowScore] = useState();
+    const scores = useSelector(state => state.scores);
+    const category = useSelector(state => state.settings[0]);
+    const difficulty = useSelector(state => state.settings[2])
+    const [maxScore, setMaxScore] = useState(0);
 
+    // useEffect(() => {
+    //     effect
+    //     return () => {
+    //         cleanup
+    //     }
+    // }, [input])
+
+    
 
     return (
-        <div>
-            <h1 className='final-score'>
-                Game over! Your score is: {score}.
-            </h1>
-        </div>
+        <>
+            <h3>{difficulty}</h3>
+            <h3>{category}</h3>
+            <div>
+                <h1 className='local-score'>
+                    Game over! Your score is:0.
+                </h1>
+            </div>
+        </>
     )
 }
 
