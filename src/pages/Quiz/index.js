@@ -5,9 +5,16 @@ import { useParams } from 'react-router';
 
 const QuizPage = () =>{
     const [ allQuestions, setAllQuestions ] = useState([]);
+    const [ someState, setSomeState ] = useState();
     const { level } = useParams();
-    const quizData = useSelector(state => state.settings)
-    const categoryData = useSelector(state => state.categories)
+    const quizData = useSelector(state => state.settings);
+    const categoryData = useSelector(state => state.categories);
+
+    useEffect(()=> {
+        
+        // in selected function will call back and set some local state. Use that state to save to global storage
+        dispatch(localScores(scores));
+    }, [/*This will be the changing question function dependency*/])
 
     useEffect(() => {
         async function fullDataSet() {
@@ -25,8 +32,11 @@ const QuizPage = () =>{
         return () => clearInterval(stream)
     }, [])
 
+    
+
     return (
         <>
+
             <h1>The Topic is: {quizData[0]}</h1>
             <h2>The users are: {quizData[1].map((x,i)=> <h3 key={i}>{x}</h3> )}</h2>
             <h2>The difficulty is: {quizData[2]}</h2>

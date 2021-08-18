@@ -1,6 +1,7 @@
 const initState = {
     categories: [],
     settings: [],
+    scores: [],
     loading: false
 };
 
@@ -16,6 +17,12 @@ const mainReducer = (state=initState, action) => {
             return ({
                 ...state,
                 settings: action.payload,
+                error: false
+            })
+        case 'UPDATE_LOCAL_SCORES':
+            return ({
+                ...state,
+                scores: action.payload,
                 error: false
             })
         case 'SET_ERROR': 
