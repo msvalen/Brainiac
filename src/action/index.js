@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const quizSettings = (...settings) => ({ type: 'UPDATE_SETTINGS', payload: settings })
 
+export const localScores = (...scores) => ({ type: 'UPDATE_LOCAL_SCORES', payload: scores })
 
 export const fetchCategories = () => {
     return async (dispatch) => {

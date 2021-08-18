@@ -8,8 +8,14 @@ const QuizPage = () =>{
     const [ allQuestions, setAllQuestions ] = useState([]);
     const [ actualQuestion, setActualQuestion ] = useState(0);
     const { level } = useParams();
-    const quizData = useSelector(state => state.settings)
-    const categoryData = useSelector(state => state.categories)
+    const quizData = useSelector(state => state.settings);
+    const categoryData = useSelector(state => state.categories);
+
+    useEffect(()=> {
+        
+        // in selected function will call back and set some local state. Use that state to save to global storage
+        dispatch(localScores(scores));
+    }, [/*This will be the changing question function dependency*/])
 
 
     useEffect(() => {
