@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import { Home, QuizPage, NotFound, HighScores } from './pages';
+import { Home, QuizPage, NotFound, HighScores, QuizSummary } from './pages';
 import { Footer } from './layout'
 
 const App = () => {
@@ -10,12 +10,15 @@ const App = () => {
                 <Switch>
                     <Route exact path='/'>
                         <Home />
-                    </Route>
-                    <Route path='/:level/:category'>
-                        <QuizPage />
+                    </Route>                    
+                    <Route path='/scores/local'>
+                        <QuizSummary />
                     </Route>
                     <Route path='/scores'>
                         <HighScores />
+                    </Route>
+                    <Route path='/:level/:category'>
+                        <QuizPage />
                     </Route>
                     <Route >
                         <NotFound />
