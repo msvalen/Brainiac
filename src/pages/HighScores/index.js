@@ -46,9 +46,6 @@ const HighScores = () => {
         return score.map((s, i ) => <tr key={i}><td>{i+1}</td><td>{s.username}</td><td>progress bar</td><td>{s.score}</td></tr>)
       }
 
-    
-
-
     return (
         <>
             <div>
