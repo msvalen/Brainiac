@@ -8,6 +8,7 @@ class Score {
     this.category = data.category
     this.difficulty = data.difficulty
     this.score = data.score
+    // this.scores = data.scores
 }
 
     static get all() {
@@ -35,6 +36,19 @@ class Score {
             }
         });
     }
+    //insert Many
+    // static create(scores){
+    //     return new Promise (async (resolve, reject) => {
+    //         try {
+    //             const db = await init();
+    //             let scoresData = await db.collection('scores').insertMany(scores)
+    //             let newScores = new Score({...score, id:scoresData.insertedId});
+    //             resolve (newScores);
+    //         } catch (err) {
+    //             reject('Error adding new scores');
+    //         }
+    //     });
+    // }
 }
 
 
