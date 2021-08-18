@@ -32,7 +32,6 @@ const HighScores = () => {
         async function getScores() {
             try {
                 const filteredScoresData = await allScores.filter(d => d.category == category && d.difficulty == difficulty)
-                console.log(filteredScoresData)
                 filteredScoresData.sort(sortScores)
                 setScore(filteredScoresData)
             } catch(err) {
