@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { fetchCategories, quizSettings } from '../../action';
+import { fetchCategories, fetchQuestions, quizSettings } from '../../action';
 import { useHistory } from 'react-router-dom';
 import { Modal } from '../../layout';
 
@@ -10,7 +10,7 @@ const Home = () => {
     const [ category, setCategory ] = useState('Animals');
     const [ modal, setModal ]=useState(false);
     const [ users, setUsers ] = useState([]);
-    const [ difficulty, setDifficulty ] = useState('easy')
+    const [ difficulty, setDifficulty ] = useState('easy');
 
     const dispatch = useDispatch();
     const data1 = useSelector(state => state.categories);
@@ -37,10 +37,19 @@ const Home = () => {
         setModal(true)
     }
 
-    const handleGenQuiz = (e) => {
+    const handleGenQuiz = async (e) => {
         e.preventDefault();
         dispatch(quizSettings(category, users , difficulty));
-        history.push(`/${difficulty}/${category}`);
+        
+        const filteredCatObj = data1.filter(x => x.category == category)
+        const categoryId = filteredCatObj[0].id;
+        try{
+            await dispatch(fetchQuestions(categoryId,difficulty));
+            await history.push(`/${difficulty}/${category}`);
+        }catch(err){
+           console.log(err)
+        }
+        
     }
 
     const saveUsers = (e) => {
@@ -65,6 +74,7 @@ const Home = () => {
                 {modal && <Modal getResults={saveUsers} show={closeModal}/>}
                 <button onClick={handleGenQuiz}>Generate Quiz</button>
             </form>
+            {error && <p>{error}</p>}
             <h2>By: Deborah, Monica & Scott</h2>
         </>
     )

@@ -1,54 +1,50 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { useParams } from 'react-router';
+import { fetchCategories, fetchQuestions } from '../../action';
 import { Question } from '../../components';
 
 const QuizPage = () =>{
-    const [ allQuestions, setAllQuestions ] = useState([]);
+    const dispatch = useDispatch();
+    
     const [ actualQuestion, setActualQuestion ] = useState(0);
+    const [toggle, setToggle] = useState(false)
     const { level } = useParams();
     const quizData = useSelector(state => state.settings);
     const categoryData = useSelector(state => state.categories);
-
-    useEffect(()=> {
-        
-        // in selected function will call back and set some local state. Use that state to save to global storage
-        dispatch(localScores(scores));
-    }, [/*This will be the changing question function dependency*/])
+    const questions = useSelector(state=> state.questions)
 
 
     useEffect(() => {
-        async function fullDataSet() {
-            try {
-                const filteredCatObj = categoryData.filter(x => x.category == quizData[0])
-                const categoryId = filteredCatObj[0].id;
-                let { data } = await axios.get(`https://opentdb.com/api.php?amount=10&category=${categoryId}&difficulty=${level}&type=multiple`)
-                setAllQuestions(data);
-            } catch (err) {
-                console.log(err.message)
-            }
-        }
-        fullDataSet()
-        const stream = setInterval(fullDataSet, 1000000)
-        return () => clearInterval(stream)
+        
+        const filteredCatObj = categoryData.filter(x => x.category == quizData[0])
+        const categoryId = filteredCatObj[0].id;
+        dispatch(fetchQuestions(categoryId,level));
+       
     }, [])
 
     useEffect(() => {
-       
+
     }, [actualQuestion])
 
     const changeQuestion = (answer) => {
-        if (allQuestions[actualQuestion].correct_answer == answer) {
-            
-            dispatch(localScores())
+        console.log(answer);
+        if (questions[actualQuestion].correct_answer == answer) {
+            let index=scores.findIndex(x.username==quizData[1][0])
+            scores[index].scores++
+            dispatch(localScores(scores))
         } 
+        setToggle(false)
         setActualQuestion(prev => prev+1)
+        setToggle(true)
     }
+    
 
     return (
         <>
-            { allQuestions && <Question question={allQuestions[actualQuestion]} selected={changeQuestion} /> }
+            <button onClick={()=>setToggle(true)}>startQuizz</button>
+            { toggle && <Question question={questions[actualQuestion]} selected={changeQuestion} /> }
             {/* <h1>The Topic is: {quizData[0]}</h1>
             <h2>The users are: {quizData[1].map((x,i)=> <h3 key={i}>{x}</h3> )}</h2>
             <h2>The difficulty is: {quizData[2]}</h2>
