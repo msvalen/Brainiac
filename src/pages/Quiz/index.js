@@ -7,16 +7,11 @@ import { Question } from '../../components';
 const QuizPage = () =>{
     const [ allQuestions, setAllQuestions ] = useState([]);
     const [ actualQuestion, setActualQuestion ] = useState(0);
+    const [ actualUser, setActualUser ] = useState('anonymous');
     const { level } = useParams();
     const quizData = useSelector(state => state.settings);
     const categoryData = useSelector(state => state.categories);
-
-    useEffect(()=> {
-        
-        // in selected function will call back and set some local state. Use that state to save to global storage
-        dispatch(localScores(scores));
-    }, [/*This will be the changing question function dependency*/])
-
+    const scores = useSelector(state=>state.scores)
 
     useEffect(() => {
         async function fullDataSet() {
@@ -39,20 +34,21 @@ const QuizPage = () =>{
     }, [actualQuestion])
 
     const changeQuestion = (answer) => {
-        if (allQuestions[actualQuestion].correct_answer == answer) {
-            
-            dispatch(localScores())
-        } 
-        setActualQuestion(prev => prev+1)
+        // if (allQuestions[actualQuestion].correct_answer == answer) {
+        //     let index=scores.findIndex(x.username==actualUser)
+        //     scores[index].scores++
+        //     dispatch(localScores(scores))
+        // } 
+        // setActualQuestion(prev => prev+1)
     }
 
     return (
         <>
-            { allQuestions && <Question question={allQuestions[actualQuestion]} selected={changeQuestion} /> }
-            {/* <h1>The Topic is: {quizData[0]}</h1>
+            {/* { allQuestions && <Question question={allQuestions[actualQuestion]} selected={changeQuestion} /> } */}
+            <h1>The Topic is: {quizData[0]}</h1>
             <h2>The users are: {quizData[1].map((x,i)=> <h3 key={i}>{x}</h3> )}</h2>
             <h2>The difficulty is: {quizData[2]}</h2>
-            <p>{allQuestions && console.log(allQuestions)}</p> */}
+            <p>{allQuestions && console.log(allQuestions)}</p>
         </>
     )
 }
