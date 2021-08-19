@@ -1,0 +1,16 @@
+table {
+  width: 100%;
+}
+
+th {
+  height: 70px;
+}
+
+tbody {
+  text-align: center;
+}
+
+#rank-bar {
+  height: 10px;
+  background-color: blue;
+}
