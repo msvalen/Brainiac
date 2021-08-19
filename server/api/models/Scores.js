@@ -8,7 +8,6 @@ class Score {
     this.category = data.category
     this.difficulty = data.difficulty
     this.score = data.score
-    // this.scores = data.scores
 }
 
     static get all() {
@@ -24,31 +23,32 @@ class Score {
         })
     }
 
-    static create(score){
-        return new Promise (async (resolve, reject) => {
-            try {
-                const db = await init();
-                let scoreData = await db.collection('scores').insertOne(score)
-                let newScore = new Score({...score, id:scoreData.insertedId});
-                resolve (newScore);
-            } catch (err) {
-                reject('Error adding new score');
-            }
-        });
-    }
-    //insert Many
-    // static create(scores){
+    // static create(score){
     //     return new Promise (async (resolve, reject) => {
     //         try {
     //             const db = await init();
-    //             let scoresData = await db.collection('scores').insertMany(scores)
-    //             let newScores = new Score({...score, id:scoresData.insertedId});
-    //             resolve (newScores);
+    //             let scoreData = await db.collection('scores').insertOne(score)
+    //             let newScore = new Score({...score, id:scoreData.insertedId});
+    //             resolve (newScore);
     //         } catch (err) {
-    //             reject('Error adding new scores');
+    //             reject('Error adding new score');
     //         }
     //     });
     // }
+    // insert Many
+    static create(scores){
+        return new Promise (async (resolve, reject) => {
+            try {
+                const db = await init();
+                let scoresData = await db.collection('scores').insertMany(scores)
+                console.log(scoresData);
+                let newScores = scoresData.map((s,i)=>new Score({...scores[i], id:s.insertedId}));
+                resolve (newScores);
+            } catch (err) {
+                reject('Error adding new scores');
+            }
+        });
+    }
 }
 
 
