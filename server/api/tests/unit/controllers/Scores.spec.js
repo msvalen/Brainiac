@@ -12,9 +12,14 @@ describe('scores controller', () => {
     afterAll(() => jest.resetAllMocks());
 
     describe('all scores data', () => {
-        test('it returns scores with a 200 status code', async () => {
-            let testScores = ['s1', 's2']
-            jest.spyOn(Score, 'all', 'get')
+        test('it returns scores with a 201 status code', async () => {
+            let testScores = {
+              username : "Test",
+              category : "Test Category",
+              difficulty : "hard",
+              score : 8
+            }
+            jest.spyOn(score, 'all', 'get')
                  .mockResolvedValue(testScores);
             await scoreController.index(null, mockRes);
             expect(mockStatus).toHaveBeenCalledWith(200);
@@ -31,13 +36,13 @@ describe('scores controller', () => {
               difficulty : "hard",
               score : 8
             }
-            jest.spyOn(Scores, 'create')
-                .mockResolvedValue(new Scores(testScore));
+            jest.spyOn(scores, 'create')
+                .mockResolvedValue(new scores(testScore));
                 
             const mockReq = { body: testScore }
             await scoresController.create(mockReq, mockRes);
             expect(mockStatus).toHaveBeenCalledWith(201);
-            expect(mockJson).toHaveBeenCalledWith(new Scores(testScore));
+            expect(mockJson).toHaveBeenCalledWith(new scores(testScore));
         })
     });
     
