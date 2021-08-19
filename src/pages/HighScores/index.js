@@ -65,7 +65,7 @@ const HighScores = () => {
             </select>
             </form>
 
-            <table id="rankings" className="highscore-results" width="100%">
+            <table id="rankings" className="table-style" width="100%">
 			<thead>
 				<tr>
 					<th>Rank</th>
