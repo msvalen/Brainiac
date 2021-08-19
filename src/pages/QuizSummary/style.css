@@ -18,7 +18,7 @@ table {
 }
 
 table thead tr {
-  background-color: #FC5404;
+  background-color: var(--quaternary-color);
   color: #ffffff;
   text-align: left;
 }
