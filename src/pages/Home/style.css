@@ -20,7 +20,6 @@ text-align: center;
     flex-direction: column;
     width: 300px;
     margin:auto;
-
 }
 
 .home form select  {
@@ -46,3 +45,22 @@ text-align: center;
     padding-top: 75px;
 }
 
+@media only screen and (max-width: 350px) {
+    .home h1, h2 {
+        font-size: 25px;
+    }
+
+    .home form {
+        width: 200px;
+    }
+
+    .home form select  {
+        padding: 5px 0 5px 0;
+        font-size: 15px;
+    }
+
+    .home form .buttons {
+        padding: 5px 0 5px 0;
+        font-size: 15px;
+    }
+}
