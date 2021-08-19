@@ -6,24 +6,23 @@ import { Footer } from './layout'
 const App = () => {
     return(
     <>
-    <h1>And so it begins!</h1>
-                <Switch>
-                    <Route exact path='/'>
-                        <Home />
-                    </Route>                    
-                    <Route exact path='/scores/local'>
-                        <QuizSummary />
-                    </Route>
-                    <Route path='/scores'>
-                        <HighScores />
-                    </Route>
-                    <Route path='/:level/:category'>
-                        <QuizPage />
-                    </Route>
-                    <Route >
-                        <NotFound />
-                    </Route>
-                </Switch>
+        <Switch>
+            <Route exact path='/'>
+                <Home />
+            </Route>                    
+            <Route exact path='/scores/local'>
+                <QuizSummary />
+            </Route>
+            <Route path='/scores'>
+                <HighScores />
+            </Route>
+            <Route path='/:level/:category'>
+                <QuizPage />
+            </Route>
+            <Route >
+                <NotFound />
+            </Route>
+        </Switch>
         <Footer />
     </>
     )};
