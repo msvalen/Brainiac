@@ -34,7 +34,7 @@ function AddUser({toggle, first, returnedValue }) {
         <>
         <div>
             {first && <button onClick={()=>toggle()}>-</button>}
-            <input type="text" value={user} name='users[]' onChange={updateInput} onKeyDown={keyProcessor}/>
+            <input autoFocus  type="text" value={user} name='users[]' onChange={updateInput} onKeyDown={keyProcessor}/>
         </div>
         {(generate)? <AddUser toggle={generator} first={true} returnedValue={handleReturn}/> :  <button className='addUser' onClick={generator}>+</button>}
         </>
