@@ -1,7 +1,9 @@
-* {
-box-sizing: border-box;
-text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 
+* {
+    box-sizing: border-box;
+    text-align: center;
+    font-family: "Quicksand";
 }
 
 .home h1 {
@@ -42,7 +44,7 @@ text-align: center;
 }
 
 .home h2 {
-    padding-top: 75px;
+    padding-top: 60px;
 }
 
 @media only screen and (max-width: 350px) {
