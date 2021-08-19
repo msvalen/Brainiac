@@ -8,10 +8,8 @@ const Stars = ({score}) => {
           for(let i = 0; i < score; i++) { 
           stars += "⭐";
           }
-          return stars
+          return stars 
       }
-console.log(reward())
-
 
 return (  
     <span>{reward()}</span> 
