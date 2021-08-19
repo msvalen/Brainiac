@@ -29,9 +29,7 @@ const Home = () => {
         console.log(users)
     },[users])
 
-    const closeModal = () => {
-        setModal(false);
-    }
+    
     const handleAddUser = (e) => {
         e.preventDefault();
         setModal(true)
@@ -52,9 +50,8 @@ const Home = () => {
         
     }
 
-    const saveUsers = (e) => {
-        setUsers(e);
-    }
+    const saveUsers = (e) => setUsers(e.filter(Boolean))
+    const closeModal = () => setModal(false)
 
     return (
         <>
@@ -62,7 +59,7 @@ const Home = () => {
             <form id="inputParameters">
                 <label htmlFor="topic"></label>
                 <select name="topic" form="inputParameters" id="topic" onChange={(e) => setCategory(e.target.value)}>
-                    {data1 && data1.map((x,i) => <option key={i}>{x.category}</option>)}
+                    { data1 && data1.map((x,i) => <option key={i}>{x.category}</option>) }
                 </select>
                 <label htmlFor="difficulty"></label>
                 <select name="difficulty" form="inputParameters" id="difficulty" onChange={(e)=> setDifficulty(e.target.value)}>
@@ -70,8 +67,8 @@ const Home = () => {
                    <option value='medium'>Medium</option>
                    <option value='hard'>Hard</option>
                 </select>
-                {(users.length === 0)? <button onClick={handleAddUser}>Add users</button> : <p>{users.map((x,i) => <span key={i}>{x} </span>)}</p>}
-                {modal && <Modal getResults={saveUsers} show={closeModal}/>}
+                { (users.length === 0)? <button onClick={handleAddUser}>Add users</button> : <p>{users.map((x,i) => <span key={i}>{x} </span>)}</p> }
+                { modal && <Modal getResults={saveUsers} show={closeModal}/> }
                 <button onClick={handleGenQuiz}>Generate Quiz</button>
             </form>
             {error && <p>{error}</p>}
