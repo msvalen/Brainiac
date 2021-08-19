@@ -10,8 +10,9 @@
 
 table {
     border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
+    margin: 0 auto;
+    width: 80%;
+    font-size: 1.2em;
     font-family: sans-serif;
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -33,11 +34,11 @@ table tbody tr {
 }
 
 table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
+  background-color:rgba(0, 0, 0, 0.15)
 }
 
 table tbody tr:last-of-type {
-  border-bottom: 2px solid #FC5404;
+  border-bottom: 2px solid var(--quaternary-color);
 }
 
 button {

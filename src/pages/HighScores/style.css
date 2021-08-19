@@ -5,9 +5,10 @@
   }
   
   h1 {
+      font-size: 2rem;
       padding-bottom: 10px;
   }
-  
+
   
   form {
       margin:auto;
@@ -43,9 +44,9 @@
 .table-style {
     border-collapse: collapse;
     margin: 0 auto;
-    font-size: 0.9em;
+    font-size: 1.2em;
     font-family: sans-serif;
-    width: 70%;
+    width: 80%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -65,11 +66,11 @@
 }
 
 .table-style tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
+  background-color:rgba(0, 0, 0, 0.15)
 }
 
 .table-style tbody tr:last-of-type {
-  border-bottom: 2px solid #FC5404;
+  border-bottom: 2px solid var(--quaternary-color);
 }
 
 @media only screen and (max-width: 350px) {
