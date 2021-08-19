@@ -11,12 +11,12 @@
 
   
   form {
-      margin:auto;
+      margin: 0 auto;
   }
   
   select  {
       padding: 5px;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
       text-align-last:center;
       font-size: 1rem;
       border-radius: 10px;
@@ -28,8 +28,7 @@
   } */
   
   form {
-      padding: 20px 0 20px 0;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
       border-radius: 10px;
   }
 
@@ -44,7 +43,7 @@
 .table-style {
     border-collapse: collapse;
     margin: 0 auto;
-    font-size: 1.2em;
+    font-size: 1em;
     font-family: sans-serif;
     width: 80%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
