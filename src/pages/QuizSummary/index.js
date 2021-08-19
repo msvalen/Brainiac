@@ -24,25 +24,35 @@ const QuizSummary = () => {
         console.log(category);
         console.log(difficulty)
 
-        // const postData = scores.map((t,i)=>[{"scores": {"username": t.name,"category": category,"difficulty": difficulty,"score": t.score}}]
+        const postData = scores.map((t)=>({"username": t.name,"category": category,"difficulty": difficulty,"score": t.score}))
         
         //below works but what if we have more than 1 user? Also as we rotate users they won't be seeing 10 questions each!
         //without editing the server we could put all of this in an if statement or a do while loop based on the length of scores - very verbose ...
 
         try{
-        await axios.post('https://brainiac-quiz.netlify.app/.netlify/functions/api',
-        {
-            "score" : {
-                "username": scores[0].name,
-                "category": category,
-                "difficulty": difficulty,
-                "score": scores[0].score
+            await axios.post('https://brainiac-quiz.netlify.app/.netlify/functions/api',
+            {
+                "scores" : postData
+            })
+            } catch (err) {
+                console.log('crap')
+                console.log(err.message)
             }
-        })
-        } catch (err) {
-            console.log('crap')
-            console.log(err.message)
-        }
+
+        // try{
+        // await axios.post('https://brainiac-quiz.netlify.app/.netlify/functions/api',
+        // {
+        //     "scores" : {
+        //         "username": scores[0].name,
+        //         "category": category,
+        //         "difficulty": difficulty,
+        //         "score": scores[0].score
+        //     }
+        // })
+        // } catch (err) {
+        //     console.log('crap')
+        //     console.log(err.message)
+        // }
     }, [])
 
     const renderRows = () => {
