@@ -1,20 +1,13 @@
-import { render } from 'react-dom'
-import {screen, waitFor} from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import axios from 'axios'
-import App from '../../App'
+import AddUser from '.';
+import userEvent from '@testing-library/user-event';
+import { screen } from '@testing-library/react';
+import './style.css'
 
-describe('Name for test suite', ()=> {
-    beforeEach(() => {
-        renderWithReduxProvider(<App />) // , { initState } this might change, may also want to have it render a different init state based on the test
-    })
-
-    test('What you want to test', () =>{
-        // expect().toBeInTheDocument();
-        // expect().toHaveBeenCalledTimes(1);
-        // expect().toBe();
-        // expect().toContain();
-        // expect().toEqual();
-        // expect().toBeInstanceOf();
+describe('AddUser', ()=> {
+    
+    test('It renders a button if first is equal to true ', () => {       
+        renderWithReduxProvider(<AddUser toggle={false} first={true} returnedValue={()=>'yes'} />)
+        let button = screen.getByText('-');
+        expect(button).toBeInTheDocument();
     })
 })

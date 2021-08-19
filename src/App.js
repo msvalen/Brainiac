@@ -1,11 +1,13 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { Home, QuizPage, NotFound, HighScores, QuizSummary } from './pages';
-import { Footer } from './layout'
+import { Footer,Header } from './layout'
+import './style.css'
 
 const App = () => {
     return(
     <>
+        <Header/>
         <Switch>
             <Route exact path='/'>
                 <Home />
