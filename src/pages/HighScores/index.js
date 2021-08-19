@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories} from '../../action';
 import axios from 'axios';
+import './style.css';
 
 
 const HighScores = () => {
@@ -42,7 +43,7 @@ const HighScores = () => {
     }, [category, difficulty])
 
     const renderRows = () => {
-        return score.map((s, i ) => <tr key={i}><td>{i+1}</td><td>{s.username}</td><td>progress bar</td><td>{s.score}</td></tr>)
+        return score.map((s, i ) => <tr key={i}><td>{i+1}</td><td>{s.username}</td><td><div id="rank-bar"></div></td><td>{s.score}</td></tr>)
       }
 
     return (
@@ -69,7 +70,7 @@ const HighScores = () => {
 				<tr>
 					<th>Rank</th>
 					<th>Name</th>
-					<th>Progress bar</th>
+					<th></th>
 					<th>Score</th>
 				</tr>
 			</thead>
