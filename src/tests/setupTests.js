@@ -5,6 +5,7 @@ import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 import '@testing-library/jest-dom';
 import { createStore, applyMiddleware } from 'redux';
+import { MemoryRouter } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import axios from 'axios';
 import mainReducer from '../reducers/index';
@@ -18,7 +19,9 @@ const TestProviders = ({ initState }) => {
 
     return ({ children }) => (
         <Provider store={testStore}>
-            { children }
+            <MemoryRouter>
+                { children }
+            </MemoryRouter>
         </Provider>
     )
 }
