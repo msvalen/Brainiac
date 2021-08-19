@@ -19,6 +19,7 @@
       text-align-last:center;
       font-size: 1rem;
       border-radius: 10px;
+      background-color: #ff8181;
       outline: none;
   }
   
@@ -42,15 +43,15 @@
   
 .table-style {
     border-collapse: collapse;
-    margin: 25px 0;
+    margin: 0 auto;
     font-size: 0.9em;
     font-family: sans-serif;
-    min-width: 400px;
+    width: 70%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .table-style thead tr {
-  background-color: #FC5404;
+  background-color: var(--quaternary-color);
   color: #ffffff;
   text-align: left;
 }
