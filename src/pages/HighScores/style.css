@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+  text-align: center;
+  
+  }
+  
+  h1 {
+      font-size: 2rem;
+      padding-bottom: 10px;
+  }
+
+  
+  form {
+      margin:auto;
+  }
+  
+  select  {
+      padding: 5px;
+      margin-bottom: 30px;
+      text-align-last:center;
+      font-size: 1rem;
+      border-radius: 10px;
+      outline: none;
+  }
+  
+  /* form select:focus {
+      font-weight: bold;
+  } */
+  
+  form {
+      padding: 20px 0 20px 0;
+      margin-bottom: 30px;
+      border-radius: 10px;
+  }
+
+  #topic {
+    margin-right: 10px;
+  }
+
+  #difficulty {
+    margin-left: 10px;
+  }
+  
+.table-style {
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    width: 80%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.table-style thead tr {
+  background-color: var(--quaternary-color);
+  color: #ffffff;
+  text-align: left;
+}
+
+.table-style th,
+.table-style td {
+    padding: 12px 15px;
+}
+
+.table-style tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.table-style tbody tr:nth-of-type(even) {
+  background-color:rgba(0, 0, 0, 0.15)
+}
+
+.table-style tbody tr:last-of-type {
+  border-bottom: 2px solid var(--quaternary-color);
+}
+
+@media only screen and (max-width: 350px) {
+  h1 {
+      font-size: 25px;
+  }
+
+  form {
+      width: 200px;
+  }
+
+  form select  {
+      padding: 5px 0 5px 0;
+      font-size: 15px;
+  }
+
+  form {
+      padding: 5px 0 5px 0;
+      font-size: 15px;
+  }
+}

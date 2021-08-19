@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import ProgressBar from 'react-percent-bar';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios'
+import './style.css'
 
 const QuizSummary = () => {
     const scores = useSelector(state => state.scores);
