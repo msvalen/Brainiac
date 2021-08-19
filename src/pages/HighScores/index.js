@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories} from '../../action';
 import axios from 'axios';
+import { Stars } from '../../components/'
 import './style.css';
 
 
@@ -41,9 +42,21 @@ const HighScores = () => {
         } 
         getScores()
     }, [category, difficulty])
+    
+    
+    // useEffect(() => {
+    //     const reward = () => {
+    //         let stars = ""; 
+    //         for(let i = 0; i < score.score; i++) { 
+    //         stars += "";
+    //         }
+    //         return stars
+    //     }
+    // }, [renderRows])
+
 
     const renderRows = () => {
-        return score.map((s, i ) => <tr key={i}><td>{i+1}</td><td>{s.username}</td><td value="star"></td><td>{s.score}</td></tr>)
+        return score.map((s, i ) => <tr key={i}><td>{i+1}</td><td>{s.username}</td><td><Stars score={s.score} /></td><td>{s.score}</td></tr>)
       }
 
     return (
