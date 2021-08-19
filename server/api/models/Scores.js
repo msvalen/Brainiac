@@ -23,15 +23,14 @@ class Score {
         })
     }
 
-    static create(score){
+    static create(scores){
         return new Promise (async (resolve, reject) => {
             try {
                 const db = await init();
-                let scoreData = await db.collection('scores').insertOne(score)
-                let newScore = new Score({...score, id:scoreData.insertedId});
-                resolve (newScore);
+                await db.collection('scores').insertMany(scores)
+                resolve ('Data Saved to Database');
             } catch (err) {
-                reject('Error adding new score');
+                reject('Error adding new scores');
             }
         });
     }

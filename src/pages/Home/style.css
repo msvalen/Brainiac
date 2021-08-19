@@ -1,0 +1,48 @@
+* {
+box-sizing: border-box;
+text-align: center;
+
+}
+
+.home h1 {
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+ 
+}
+
+.home form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin:auto;
+
+}
+
+.home form select  {
+    padding: 20px 0 20px 0;
+    margin-bottom: 30px;
+    text-align-last:center;
+    font-size: x-large;
+    border-radius: 10px;
+}
+
+.home form select:focus {
+    font-weight: bold;
+}
+
+.home form .buttons {
+    padding: 20px 0 20px 0;
+    margin-bottom: 30px;
+    font-size: x-large;
+    border-radius: 10px;
+}
+
+.home h2 {
+    padding-top: 75px;
+}
+
