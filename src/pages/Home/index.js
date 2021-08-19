@@ -55,7 +55,7 @@ const Home = () => {
 
     return (
         <>
-            <h1>Quiz Title</h1>
+            <h1>The Quiz for Brainiac's</h1>
             <form id="inputParameters">
                 <label htmlFor="topic"></label>
                 <select name="topic" form="inputParameters" id="topic" onChange={(e) => setCategory(e.target.value)}>
