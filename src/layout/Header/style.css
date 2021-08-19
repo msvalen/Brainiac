@@ -1,0 +1,18 @@
+header a:link, header a:visited, header a:hover, header a:active  {
+    text-decoration:none;
+    color:white;
+}
+header a{
+    display: flex;
+    align-self: center;
+}
+header img{
+    height: 10vh;
+}
+svg {
+    fill: white;
+}
+header{
+    display: flex;
+    justify-content: center;
+}

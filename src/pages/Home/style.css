@@ -1,11 +1,13 @@
-* {
-box-sizing: border-box;
-text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 
+* {
+    box-sizing: border-box;
+    text-align: center;
+    font-family: "Quicksand";
 }
 
 .home h1 {
-    padding-top: 30px;
+    padding-top: 15px;
     padding-bottom: 10px;
 }
 
@@ -30,6 +32,10 @@ text-align: center;
     border-radius: 10px;
 }
 
+.home form p {
+    font-size: x-large;
+}
+
 .home form select:focus {
     font-weight: bold;
 }
@@ -39,10 +45,6 @@ text-align: center;
     margin-bottom: 30px;
     font-size: x-large;
     border-radius: 10px;
-}
-
-.home h2 {
-    padding-top: 75px;
 }
 
 @media only screen and (max-width: 350px) {

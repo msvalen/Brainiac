@@ -1,13 +1,3 @@
-.userModal form{
-    display:flex;
-    flex-direction: column;
-}
-.userModal form div:first-child{
-margin-left: 26px;
-}
-.userModal form button{    
-    width:2em;
-}
 .userModal{
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -24,5 +14,12 @@ margin-left: 26px;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: min-content;
+}
+.modalContent{
+    display: flex;
+    flex-direction: column;
+}
+.modalContent>*{
+    align-self: flex-end;
 }
