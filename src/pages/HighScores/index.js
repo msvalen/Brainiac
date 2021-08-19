@@ -43,7 +43,7 @@ const HighScores = () => {
     }, [category, difficulty])
 
     const renderRows = () => {
-        return score.map((s, i ) => <tr key={i}><td>{i+1}</td><td>{s.username}</td><td><div id="rank-bar"></div></td><td>{s.score}</td></tr>)
+        return score.map((s, i ) => <tr key={i}><td>{i+1}</td><td>{s.username}</td><td value="star"></td><td>{s.score}</td></tr>)
       }
 
     return (
@@ -53,6 +53,7 @@ const HighScores = () => {
             </div>
             
             <form id="inputParameters">
+                <div className="custom-select">
                 <label htmlFor="topic"></label>
                 <select name="topic" form="inputParameters" id="topic" onChange={(e) => setCategory(e.target.value)}>
                     {data1 && data1.map((x,i) => <option key={i}>{x.category}</option>)}
@@ -63,6 +64,7 @@ const HighScores = () => {
                     <option value="medium">Medium</option>
                     <option value="hard">Hard</option>
                 </select>
+                </div>
             </form>
 
             <table id="rankings" className="table-style" width="100%">
@@ -70,7 +72,7 @@ const HighScores = () => {
 				<tr>
 					<th>Rank</th>
 					<th>Name</th>
-					<th></th>
+					<th>Rewards</th>
 					<th>Score</th>
 				</tr>
 			</thead>

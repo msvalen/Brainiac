@@ -23,17 +23,17 @@ describe('Scores', () => {
 
     describe('create', () => {
         test('it resolves with scores data on successful db enquiry', async () => {
-          const scores = db.collection('scores');
+          // const scores = db.collection('scores');
 
-          const mockData = { id: 1, username : "Test", category : "Test Category", difficulty : "hard", score : 8 };
-          await scores.insertMany(mockData);
+          // const mockData = { id: 1, username : "Test", category : "Test Category", difficulty : "hard", score : 8 };
+          // await scores.insertMany(mockData);
 
-          const insertedData = await scores.findOne({ username : "Test" });
-          expect(insertedData).toEqual(mockData)
-        //     jest.spyOn(db, 'query')
-        //         .mockResolvedValueOnce({rows: [ { ...scoresData, id: 1 }] });
-        //     const result = await Scores.create(scoresData);
-        //     expect(result).toHaveProperty('username')
+          // const insertedData = await scores.findOne({ username : "Test" });
+          // expect(insertedData).toEqual(mockData)
+            jest.spyOn(db, 'query')
+                .mockResolvedValueOnce({rows: [ { ...scoresData, id: 1 }] });
+            const result = await Scores.create(scoresData);
+            expect(result).toHaveProperty('username')
         })
     });
     
