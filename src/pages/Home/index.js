@@ -7,7 +7,7 @@ import { Modal } from '../../layout';
 
 const Home = () => {
 
-    const [ category, setCategory ] = useState('Animals');
+    const [ category, setCategory ] = useState('General Knowledge');
     const [ modal, setModal ]=useState(false);
     const [ users, setUsers ] = useState([]);
     const [ difficulty, setDifficulty ] = useState('easy');
@@ -56,7 +56,7 @@ const Home = () => {
     return (
         <>
             <h1>The Quiz for Brainiac's</h1>
-            <form id="inputParameters">
+            <form id="inputParameters" aria-label="quizSettingsForm">
                 <label htmlFor="topic"></label>
                 <select name="topic" form="inputParameters" id="topic" onChange={(e) => setCategory(e.target.value)}>
                     { data1 && data1.map((x,i) => <option key={i}>{x.category}</option>) }
@@ -67,7 +67,7 @@ const Home = () => {
                    <option value='medium'>Medium</option>
                    <option value='hard'>Hard</option>
                 </select>
-                { (users.length === 0)? <button onClick={handleAddUser}>Add users</button> : <p>{users.map((x,i) => <span key={i}>{x} </span>)}</p> }
+                { (users.length === 0)? <button onClick={handleAddUser} aria-label="Add-User-Page">Add users</button> : <p>{users.map((x,i) => <span key={i}>{x} </span>)}</p> }
                 { modal && <Modal getResults={saveUsers} show={closeModal}/> }
                 <button onClick={handleGenQuiz}>Generate Quiz</button>
             </form>
