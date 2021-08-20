@@ -1,0 +1,13 @@
+.timebar{
+    height: 10px;
+    transform-origin: left center;
+    background: linear-gradient(to bottom,#A32F80,#4b133a);
+    background-color: var(--terciary-color);
+    animation: roundtime calc(var(--duration) * 1s) linear forwards;
+}
+@keyframes roundtime {
+    to {
+        /* More performant than `width` */
+        transform: scaleX(0);
+    }
+}

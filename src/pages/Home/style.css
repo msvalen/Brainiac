@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+* {
+    box-sizing: border-box;
+    text-align: center;
+    font-family: "Quicksand";
+}
+
+.home h1 {
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+ 
+}
+
+.home form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin:auto;
+}
+
+.home form select  {
+    padding: 20px 0 20px 0;
+    margin-bottom: 30px;
+    text-align-last:center;
+    font-size: x-large;
+    border-radius: 10px;
+}
+
+.home form p {
+    font-size: x-large;
+}
+
+.home form select:focus {
+    font-weight: bold;
+}
+
+.home form .buttons {
+    padding: 20px 0 20px 0;
+    margin-bottom: 30px;
+    font-size: x-large;
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 350px) {
+    .home h1, h2 {
+        font-size: 25px;
+    }
+
+    .home form {
+        width: 200px;
+    }
+
+    .home form select  {
+        padding: 5px 0 5px 0;
+        font-size: 15px;
+    }
+
+    .home form .buttons {
+        padding: 5px 0 5px 0;
+        font-size: 15px;
+    }
+}
+
+.home #topic {
+    margin-left: 10px;
+    margin-right: 0px;
+}

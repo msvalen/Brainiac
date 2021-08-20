@@ -1,0 +1,31 @@
+.question{
+    display: flex;
+    flex-direction: column;
+}
+.question .options {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    margin-bottom: 3em;
+}
+.question .options > * {
+    place-self: center;
+    background-color: var(--quaternary-color);
+    min-width: 20vw;
+    padding: 10px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    color: white;
+}
+.question .options label >* {
+    align-self: center;
+}
+.question input[type="radio"] {
+    display: none;
+}
+.question h3 {
+    align-self: center;
+    
+}

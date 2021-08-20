@@ -26,9 +26,20 @@
 
 ## Client
 - upload stud files
+- add the routes
 - do the add user modal
+- do home page
+- add highscores page
+- add question component
+- add quiz page
+- add local scores page
+- start testing
+- start styling
 
-
+## Server
+- do the dockerfile
+- deploy the server localy
+- change server to be run by netlify and still by docker
 
 ## Misc
 - add Readme
