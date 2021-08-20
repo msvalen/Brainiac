@@ -10,7 +10,7 @@ describe('Testing Home page', ()=> {
 
     describe('Home page', () => {
         test('renders with correct title', () => {
-            const heading = screen.getByRole('heading', {level:1})
+            const heading = screen.getByRole('heading', {name: "title"})
             expect(heading.textContent).toContain('Brainiac')
         })
 

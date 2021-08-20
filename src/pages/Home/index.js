@@ -39,7 +39,7 @@ const Home = () => {
     const handleGenQuiz = async (e) => {
         e.preventDefault();
         dispatch(quizSettings(category, users , difficulty));
-        
+        console.log((quizSettings(category, users , difficulty)));
         const filteredCatObj = data1.filter(x => x.category == category)
         const categoryId = filteredCatObj[0].id;
         try{
@@ -60,7 +60,7 @@ const Home = () => {
 
     return (
         <div className="home">
-            <h1 className="title">The Quiz for Brainiac's</h1>
+            <h1 className="title" aria-label="title">The Quiz for Brainiac's</h1>
             <form id="inputParameters" aria-label="quizSettingsForm">
                 <label htmlFor="topic"></label>
                 <select name="topic" form="inputParameters" id="topic" onChange={(e) => setCategory(e.target.value)}>
