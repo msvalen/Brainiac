@@ -9,7 +9,7 @@ import './style.css';
 const HighScores = () => {
     const [score, setScore] = useState();
     const [ category, setCategory ] = useState('');
-    const [ difficulty, setDifficulty ] = useState('')
+    const [ difficulty, setDifficulty ] = useState('easy')
     const [allScores, setAllScores] = useState();
     
     const dispatch = useDispatch();
@@ -21,6 +21,8 @@ const HighScores = () => {
             await dispatch(fetchCategories());
             let { data } = await axios.get('https://brainiac-quiz.netlify.app/.netlify/functions/api')
             setAllScores(data.scores)
+            await setCategory('General Knowledge');
+            await setDifficulty('easy')
         } catch (err) {
             console.log(err.message);
         }
