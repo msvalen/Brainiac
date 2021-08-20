@@ -66,3 +66,8 @@
         font-size: 15px;
     }
 }
+
+.home #topic {
+    margin-left: 10px;
+    margin-right: 0px;
+}

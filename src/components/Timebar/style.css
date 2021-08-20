@@ -1,7 +1,8 @@
 .timebar{
     height: 10px;
     transform-origin: left center;
-    background: linear-gradient(to bottom, red, rgb(128, 3, 3));
+    background: linear-gradient(to bottom,#A32F80,#4b133a);
+    background-color: var(--terciary-color);
     animation: roundtime calc(var(--duration) * 1s) linear forwards;
 }
 @keyframes roundtime {
