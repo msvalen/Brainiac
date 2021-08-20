@@ -2,9 +2,9 @@
 
 Your favorite trivia-quiz competition place
 
-[Live site](not yet)
+[Live site](https://brainiac-quiz.netlify.app/)
 
-![rbraniac usage](braniac.gif)
+![rbraniac usage](./readme-src/brainiac.gif)
 
 ## Installation & Usage
 ### Installation
@@ -12,12 +12,13 @@ Your favorite trivia-quiz competition place
 - Clone repository
 - cd into repository folder
 - Run `npm install` and wait for installation
+- if you would like to run the server side you need to run `docker-compose up` 
+    - you will find the server on the [localhost:3000](http://localhost:3080/) 
 
 ### Usage
 
 - Run `npm run dev` and navigate to [local server](http://localhost:8080/)
-- Input your GitHub username and press submit
-- View your repositories and click on one to see further info/navigate to github repo
+- The client will be sending post request with the scores to netlify, in the next version, everything will run in a docker container
 
 
 ## Technologies
@@ -68,6 +69,7 @@ Find the full changelog [here](changelog.md)
 
 ## Future Features
 
+- add the client to docker compose
 - add Socket.io package
 - add user profile img generator
 - add auth an auth

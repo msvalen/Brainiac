@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { useHistory } from 'react-router-dom';
-import { fetchQuestions,localScores } from '../../action';
+import { fetchQuestions, localScores, quizSettings } from '../../action';
 import { Question } from '../../components';
 import './style.css'
 
@@ -24,12 +24,15 @@ const QuizPage = () =>{
  
 
     useEffect(() => {
-        
         const filteredCatObj = categoryData.filter(x => x.category == quizData[0])
         const categoryId = filteredCatObj[0].id;
+        let variable=[{name:'anonymous',score:0}]
+        if(quizData[1].length>0){
+            variable = quizData[1].map(x=>({name:x,score:0}))
+        }
+        else dispatch(quizSettings(quizData[0], ['anonymous'] , quizData[2]));
+        dispatch(localScores(variable));
         dispatch(fetchQuestions(categoryId,level));
-        let variable = quizData[1].map((x)=>({name:x,score:0}));
-        dispatch(localScores(variable))
         setToggle(true);
     }, [])
 
@@ -38,7 +41,10 @@ const QuizPage = () =>{
             setIsFirstRun(false);
             return;
           }
-        else {setToggle(true);}
+        else {
+
+            setToggle(true);
+        }
     },[toggle])
 
     
@@ -62,7 +68,7 @@ const QuizPage = () =>{
 
     return (
         <div className='quizContainer'> 
-            <h3 className='showUser'>{quizData[1][actualUser]}</h3>
+            { toggle && <h3 className='showUser'>{quizData[1][actualUser]}</h3>}
             { toggle && <Question key={actualQuestion} question={questions[actualQuestion]} selected={changeQuestion} /> }
         </div>
     )
