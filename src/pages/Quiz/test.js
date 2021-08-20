@@ -1,3 +1,4 @@
+import App from '../../App';
 
 describe('Name for test suite', ()=> {
     beforeEach(() => {
