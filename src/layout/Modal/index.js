@@ -18,7 +18,7 @@ function Modal( { getResults, show }) {
     return (
         <div className='userModal'>
             <div>
-                <span onClick={show}>x</span>
+                <span onClick={show}  style={{cursor: "pointer"}}>x</span>
                 <div className='modalContent'>       
                     <AddUser toggle={false} first={false} returnedValue={(e)=>setUsers(e)}/>
                     <button onClick={handler}>submit</button>

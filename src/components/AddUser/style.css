@@ -1,10 +1,8 @@
 .addUser {
     display: flex;
-    /* flex-direction: row-reverse; */
     justify-content: flex-end;
 }
 .addUser input{
     padding: 5px;
-    height: 1.5em;
     margin: 5px;
 }
