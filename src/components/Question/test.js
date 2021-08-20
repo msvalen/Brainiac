@@ -1,20 +1,22 @@
-import { render } from 'react-dom'
-import {screen, waitFor} from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import axios from 'axios'
-import App from '../../App'
+import Question from '.';
 
-describe('Name for test suite', ()=> {
-    beforeEach(() => {
-        renderWithReduxProvider(<App />) // , { initState } this might change, may also want to have it render a different init state based on the test
-    })
-
-    test('What you want to test', () =>{
-        // expect().toBeInTheDocument();
-        // expect().toHaveBeenCalledTimes(1);
-        // expect().toBe();
-        // expect().toContain();
-        // expect().toEqual();
-        // expect().toBeInstanceOf();
+describe('Question', ()=> {
+    
+    test('It check if renders a div whose class is question', () => {       
+        const testQuestion={
+            category: "Entertainment: Musicals & Theatres",
+            type: "multiple",
+            difficulty: "hard",
+            question: "Which Shakespeare play features the stage direction &quot;Enter a messenger, with two heads and a hand&quot;?",
+            correct_answer: "Titus Andronicus",
+            incorrect_answers: [
+            "Othello",
+            "Macbeth",
+            "King Lear"
+            ]
+        }
+        renderWithReduxProvider(<Question question={testQuestion} selected={(e)=>console.log(e)} />)
+        let question = document.querySelector('.question');
+        expect(question).toBeInTheDocument();
     })
 })

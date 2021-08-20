@@ -1,0 +1,13 @@
+.quizContainer .showUser{
+    position: relative;
+    padding-top: 10px;
+}
+
+.quizContainer{
+    margin-top: 3em;
+    width: 80vw;
+    background: rgba(1, 2, 65, 0.527);
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}

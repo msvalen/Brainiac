@@ -11,11 +11,6 @@ function Modal( { getResults, show }) {
 
     const handler = (e) => {
         e.preventDefault();
-        // let users=[]
-        // for(let x of e.target){
-        //     if(x.value) users.push(x.value);
-        // }
-        console.log(users)
         getResults(users)
         show();
     }
@@ -23,8 +18,8 @@ function Modal( { getResults, show }) {
     return (
         <div className='userModal'>
             <div>
-                <span onClick={show}>x</span>
-                <div>       
+                <span onClick={show}  style={{cursor: "pointer"}}>x</span>
+                <div className='modalContent'>       
                     <AddUser toggle={false} first={false} returnedValue={(e)=>setUsers(e)}/>
                     <button onClick={handler}>submit</button>
                 </div>

@@ -5,6 +5,7 @@ import { useParams } from 'react-router';
 import { useHistory } from 'react-router-dom';
 import { fetchQuestions,localScores } from '../../action';
 import { Question } from '../../components';
+import './style.css'
 
 const QuizPage = () =>{
     const dispatch = useDispatch();
@@ -61,7 +62,7 @@ const QuizPage = () =>{
 
     return (
         <div className='quizContainer'> 
-            <h3>{quizData[1][actualUser]}</h3>
+            <h3 className='showUser'>{quizData[1][actualUser]}</h3>
             { toggle && <Question key={actualQuestion} question={questions[actualQuestion]} selected={changeQuestion} /> }
         </div>
     )

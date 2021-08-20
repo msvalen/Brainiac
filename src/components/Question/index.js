@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Timebar from '../Timebar';
 import './style.css'
 
+const renderHTML = (rawHTML,type) => React.createElement(type, { dangerouslySetInnerHTML: { __html: rawHTML } });
+
 function Question({question, selected}) {
     const [options, setOptions] = useState([]);
     const [input, setInput] = useState('');
@@ -33,8 +35,8 @@ function Question({question, selected}) {
 
     function showOptions(){
         return options.map((option,i) =>{
-            return( <label key={i}> {option}
-                    <input type='radio' name='option' value={option} onChange={(e)=>setInput(e.target.value)} />
+            return( <label key={i}> { renderHTML(option,'p')}
+                        <input type='radio' name='option' value={option} onChange={(e)=>setInput(e.target.value)} />
                     </label>
             )
         });
@@ -43,7 +45,7 @@ function Question({question, selected}) {
     return (
         
         <div className='question'>
-            <h3>{question.question}</h3>
+            {renderHTML(question.question,'h3')}
             <div className='options'>
                 {options && showOptions()}
             </div>

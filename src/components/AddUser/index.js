@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import './style.css'
+
 
 function AddUser({toggle, first, returnedValue }) {
     const [ generate, setGenerate ] = useState();
@@ -21,7 +23,6 @@ function AddUser({toggle, first, returnedValue }) {
     } 
     const keyProcessor = (e)=>{
         if (e.keyCode === 13) {
-            console.log(e)
             setGenerate(true);
         }
     }
@@ -32,7 +33,7 @@ function AddUser({toggle, first, returnedValue }) {
     
     return (
         <>
-        <div>
+        <div className='addUser'> 
             {first && <button onClick={()=>toggle()}>-</button>}
             <input autoFocus  type="text" value={user} name='users[]' onChange={updateInput} onKeyDown={keyProcessor}/>
         </div>
