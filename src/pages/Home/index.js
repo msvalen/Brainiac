@@ -50,6 +50,10 @@ const Home = () => {
         }
         
     }
+    const handleClick = (e) => {
+        e.preventDefault();
+        history.push('/scores')
+    }
 
     const saveUsers = (e) => setUsers(e.filter(Boolean))
     const closeModal = () => setModal(false)
@@ -71,6 +75,7 @@ const Home = () => {
                 { (users.length === 0)? <button className="buttons"onClick={handleAddUser} aria-label="Add-User-Page">Add users</button> : <p>{users.map((x,i) => <span key={i}>{x} </span>)}</p> }
                 { modal && <Modal getResults={saveUsers} show={closeModal}/> }
                 <button className="buttons"onClick={handleGenQuiz}>Generate Quiz</button>
+                <button onClick={handleClick}>Check out global HighScores </button>
             </form>
             {error && <p>{error}</p>}
             <h2>By: Deborah, Monica & Scott</h2>
